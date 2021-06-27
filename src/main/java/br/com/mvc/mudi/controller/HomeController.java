@@ -10,30 +10,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.mvc.mudi.emums.StatusPedido;
 import br.com.mvc.mudi.model.Pedido;
-import br.com.mvc.mudi.model.StatusPedido;
 import br.com.mvc.mudi.repository.PedidoRepository;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-	
+
 	@Autowired
-	private PedidoRepository repository;
+	private PedidoRepository pedidoRepository;
 	
 	@GetMapping
 	public String home(Model model) {
-		List<Pedido> pedidos = repository.findAll();
+		List<Pedido> pedidos = pedidoRepository.findAll();
 		model.addAttribute("pedidos", pedidos);
-		return "home"; 
+		return "home";
 	}
 	
 	@GetMapping("/{status}")
-	public String porStatus(@PathVariable("status") String status, Model model) {
-		List<Pedido> pedidos = repository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));
+	public String status(@PathVariable("status") String status, Model model) {
+		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));
 		model.addAttribute("pedidos", pedidos);
 		model.addAttribute("status", status);
-		return "home"; 
+		return "home";
 	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
@@ -41,3 +41,14 @@ public class HomeController {
 		return "redirect:/home";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

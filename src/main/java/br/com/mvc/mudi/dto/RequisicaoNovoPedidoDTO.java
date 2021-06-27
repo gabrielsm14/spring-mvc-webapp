@@ -2,17 +2,15 @@ package br.com.mvc.mudi.dto;
 
 import javax.validation.constraints.NotBlank;
 
+import br.com.mvc.mudi.emums.StatusPedido;
 import br.com.mvc.mudi.model.Pedido;
-import br.com.mvc.mudi.model.StatusPedido;
 
-public class RequisicaoNovoPedido {
-
-	@NotBlank // NotBlank.requisicaoNovoPedido.nomeProduto=não pode estar em branco
-	private String nomeProduto;
+public class RequisicaoNovoPedidoDTO {
 
 	@NotBlank
+	private String nomeProduto;
+	@NotBlank
 	private String urlProduto;
-
 	@NotBlank
 	private String urlImagem;
 	private String descricao;

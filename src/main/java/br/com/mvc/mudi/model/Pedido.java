@@ -10,19 +10,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.mvc.mudi.emums.StatusPedido;
+
+
+
 @Entity
 public class Pedido {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
-	private LocalDate dataDaEntrega;
+	private LocalDate dataEntrega;
 	private String urlProduto;
 	private String urlImagem;
 	private String descricao;
-
+	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 
@@ -38,16 +42,16 @@ public class Pedido {
 		return valorNegociado;
 	}
 
-	public void setValorNegociavel(BigDecimal valorNegociado) {
+	public void setValorNegociado(BigDecimal valorNegociado) {
 		this.valorNegociado = valorNegociado;
 	}
 
-	public LocalDate getDataDaEntrega() {
-		return dataDaEntrega;
+	public LocalDate getDataEntrega() {
+		return dataEntrega;
 	}
 
-	public void setDataDaEntrega(LocalDate dataDaEntrega) {
-		this.dataDaEntrega = dataDaEntrega;
+	public void setDataEntrega(LocalDate dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	public String getUrlProduto() {
